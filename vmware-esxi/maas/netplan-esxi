@@ -68,7 +68,7 @@ def wipe():
             ]
         )
 
-    check_call(["esxcli", "network", "ip", "dns", "server", "remove", "--all"])
+    check_call(["esxcli", "network", "ip", "dns", "server", "remove", "-s", "localhost", "--all"])
     output = check_output(["esxcli", "network", "ip", "dns", "search", "list"])
     output = output.decode().split(":", 2)[1]
     for search in output.split(","):
